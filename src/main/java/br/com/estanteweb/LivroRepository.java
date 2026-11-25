@@ -14,8 +14,7 @@ public class LivroRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private static final List<String> COLUNAS_PERMITIDAS =
-        List.of("titulo", "autor", "ano", "preco");
+    private static final List<String> COLUNAS_PERMITIDAS = List.of("titulo", "autor", "ano", "preco");
 
     public List<Livro> listarTodos() {
         String sql = "SELECT * FROM livro";
@@ -45,13 +44,13 @@ public class LivroRepository {
     public void salvar(Livro livro) {
         String sql = "INSERT INTO livro (titulo, autor, ano, preco) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql,
-            livro.getAutor(), livro.getTitulo(), livro.getAno(), livro.getPreco());
+                livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getPreco());
     }
 
     public void atualizar(Livro livro) {
         String sql = "UPDATE livro SET titulo = ?, autor = ?, ano = ?, preco = ?";
         jdbcTemplate.update(sql,
-            livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getPreco());
+                livro.getTitulo(), livro.getAutor(), livro.getAno(), livro.getPreco());
     }
 
     public void excluir(Long id) {
