@@ -83,7 +83,7 @@ public class LivroController {
             @RequestParam String autor, @RequestParam int ano,
             @RequestParam double preco, HttpSession session) {
 
-        if (session.getAttribute("usuario") == null) {
+        if (session.getAttribute("usuarioLogado") == null) {
             return "redirect:/login";
         }
 
